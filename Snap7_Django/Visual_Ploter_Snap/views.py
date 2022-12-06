@@ -1,4 +1,6 @@
 import json
+import time
+
 from django.shortcuts import redirect, render, HttpResponse, get_object_or_404
 from .models import *
 from django.shortcuts import get_object_or_404
@@ -10,6 +12,8 @@ from django import forms
 import pygal
 import random as rand
 from datetime import datetime
+import threading
+import time
 
 
 def database_read(id_odczytu):
@@ -37,15 +41,20 @@ def index(request):
     odczyty_ids = list(odczyty_ids)
     print(liczba_odczytow)
     lod = liczba_odczytow.count()
-    nowy_odczyt(12, 32, 21)
+    nowy_odczyt(rand.randint(1, 100), rand.randint(1, 100), rand.randint(1, 100))
     if request.method == "POST":
         Odczyty.objects.all().delete()
+        return redirect("/")
     if lod > 2:
         time_table = []
         temp_table = []
         amp_table = []
         volt_table = []
-        for x in range(1, lod + 1):
+        first = 1
+        if lod > 100:
+            while lod > 100:
+                first = lod - 50
+        for x in range(first, lod + 1):
             tim, temp, amp, volt = database_read(odczyty_ids[x-1])
             time_table.append(tim)
             temp_table.append(temp)

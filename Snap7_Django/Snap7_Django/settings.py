@@ -108,11 +108,9 @@ LANGUAGE_CODE = 'pl-pl'
 
 TIME_ZONE = 'Europe/Warsaw'
 
-DATE_FORMAT = '%H:%M:%S'
+USE_I18N = True
 
-USE_I18N = False
-
-USE_TZ = False
+USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

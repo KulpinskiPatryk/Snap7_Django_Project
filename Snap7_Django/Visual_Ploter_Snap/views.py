@@ -18,7 +18,7 @@ import time
 
 def database_read(id_odczytu):
     odczyt = Odczyty.objects.get(id=id_odczytu)
-    return odczyt.czas, odczyt.temperatura, odczyt.prad, odczyt.napiecie
+    return odczyt.czas.strftime("%H:%M:%S"), odczyt.temperatura, odczyt.prad, odczyt.napiecie
 
 
 def ploter(title, wart_x, wart_y):
@@ -51,9 +51,8 @@ def index(request):
         amp_table = []
         volt_table = []
         first = 1
-        if lod > 100:
-            while lod > 100:
-                first = lod - 50
+        if lod > 10:
+            first = lod - 10
         for x in range(first, lod + 1):
             tim, temp, amp, volt = database_read(odczyty_ids[x-1])
             time_table.append(tim)

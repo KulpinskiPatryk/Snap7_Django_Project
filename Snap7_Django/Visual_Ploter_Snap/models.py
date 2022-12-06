@@ -5,7 +5,7 @@ from django.urls import reverse
 
 
 class Odczyty(models.Model):
-    czas = models.DateTimeField(format="%H:%M:%S", auto_now_add=True, )
+    czas = models.DateTimeField(auto_now_add=True, )
     temperatura = models.IntegerField()
     prad = models.IntegerField()
     napiecie = models.IntegerField()

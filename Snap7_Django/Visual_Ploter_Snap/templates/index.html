@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAASkpKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREQAAAAAAAREREAAAAAARERERAAAAABEREREAAAAAEREREQAAAAARERERAAAAAAERERAAAAAAABERAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA/D8AAPgfAADwDwAA8A8AAPAPAADwDwAA+B8AAPw/AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
+</head>
+<body>
+    <form method="POST"> {% csrf_token %}
+        <button class="btn btn-outline-success mt-4">Resetuj</button>
+    </form>
+ <section class="section">
+    <div class="container">
+    <div id="plot_temp" >
+       <embed type="image/svg+xml" src= {{ plot_temp|safe }} witdth="5" />
+    </div>
+    <div id="plot_amp" >
+       <embed type="image/svg+xml" src= {{ plot_amp|safe }} witdth="5" />
+    </div>
+    <div id="plot_volt" >
+       <embed type="image/svg+xml" src= {{ plot_volt|safe }} witdth="5" />
+    </div>
+    </div>
+  </section>
+<script>
+    window.setTimeout(function () {
+        location.href = "{{"/"}}";
+    }, 50000); // refresh/redirect after 5 seconds.
+</script>
+</body>
+</html>

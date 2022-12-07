@@ -69,7 +69,8 @@ def index(request):
     odczyty_ids = list(odczyty_ids)
     print(liczba_odczytow)
     lod = liczba_odczytow.count()
-    nowy_odczyt(read_from_PLC())
+    nowy_odczyt(rand.randint(1, 10), rand.randint(1, 10), rand.randint(1, 10))
+    # nowy_odczyt(read_from_PLC())
     if request.method == "POST":
         Odczyty.objects.all().delete()
         return redirect("/")
@@ -82,7 +83,7 @@ def index(request):
         if lod > 10:
             first = lod - 10
         for x in range(first, lod + 1):
-            tim, temp, amp, volt = database_read(odczyty_ids[x-1])
+            tim, temp, amp, volt = database_read(odczyty_ids[x - 1])
             time_table.append(tim)
             temp_table.append(temp)
             amp_table.append(amp)
@@ -93,4 +94,10 @@ def index(request):
         return render(request, 'index.html', {"plot_temp": plot_temp,
                                               "plot_amp": plot_amp,
                                               "plot_volt": plot_volt, })
-    return render(request, 'blank.html')
+
+    plot_temp = None
+    plot_amp = None
+    plot_volt = None
+    return render(request, 'index.html', {"plot_temp": plot_temp,
+                                          "plot_amp": plot_amp,
+                                          "plot_volt": plot_volt, })

@@ -8,22 +8,63 @@
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAASkpKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREQAAAAAAAREREAAAAAARERERAAAAABEREREAAAAAEREREQAAAAARERERAAAAAAERERAAAAAAABERAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA//8AAP//AAD//wAA/D8AAPgfAADwDwAA8A8AAPAPAADwDwAA+B8AAPw/AAD//wAA//8AAP//AAD//wAA" rel="icon" type="image/x-icon" />
 </head>
 <body>
-    <form method="POST"> {% csrf_token %}
-        <button class="btn btn-outline-success mt-4">Resetuj</button>
-    </form>
- <section class="section">
-    <div class="container">
-    <div id="plot_temp" >
-       <embed type="image/svg+xml" src= {{ plot_temp|safe }} witdth="5" />
+    <nav class="navbar is-transparent">
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="field is-grouped">
+          <p class="control">
+          <form method="POST"> {% csrf_token %}
+                <form method="POST"> {% csrf_token %}
+                    <button class="button is-danger">Resetuj</button>
+                </form>
+            </form>
+          </p>
+        </div>
+      </div>
     </div>
-    <div id="plot_amp" >
-       <embed type="image/svg+xml" src= {{ plot_amp|safe }} witdth="5" />
+  </div>
+</nav>
+
+<div class="is-centered">
+<div class="columns is-centered">
+    <div class="container s-max-desktop ">
+    <div class="tile is-ancestor is-vcentered">
+      <div class="tile is-vertical">
+        <div class="tile is-center">
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child box">
+              {% if plot_temp %}
+                <div id="plot_temp" >
+                   <embed type="image/svg+xml" src= {{ plot_temp|safe }} witdth="5" />
+                </div>
+              {% endif %}
+            </article>
+            <article class="tile is-child box">
+             {% if plot_amp %}
+                <div id="plot_amp" >
+                   <embed type="image/svg+xml" src= {{ plot_amp|safe }} witdth="5" />
+                </div>
+            {% endif %}
+            </article>
+          </div>
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child box">
+              {% if plot_volt %}
+                <div id="plot_volt" >
+                   <embed type="image/svg+xml" src= {{ plot_volt|safe }} witdth="5" />
+                </div>
+              {% endif %}
+            </article>
+            <article class="tile is-child box">
+              <!-- Put any content you want -->
+            </article>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="plot_volt" >
-       <embed type="image/svg+xml" src= {{ plot_volt|safe }} witdth="5" />
     </div>
-    </div>
-  </section>
+</div>
+</div>
 <script>
     window.setTimeout(function () {
         location.href = "{{"/"}}";

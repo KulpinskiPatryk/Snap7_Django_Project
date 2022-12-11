@@ -1,0 +1,6 @@
+1. Otwieramy terminal w pycharmie
+2. wpisujemy cd Snap7_Django
+3. wpisujemy py manage.py runserver
+4. pojawia się link to nasza strona
+5. po wklejenu linku do przeglądarki można na końcu dopisać /admin
+6. pojawi się nam panel admina

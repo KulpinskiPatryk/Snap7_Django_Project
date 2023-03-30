@@ -1,6 +1,6 @@
 # Snap7_Django_Project
 
-Programs used for simulation of PLC
+Programs used for simulation of PLC: 
 Tia portal c17
 Plcsim
 Plcsim advanced
